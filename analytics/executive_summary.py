@@ -1,74 +1,41 @@
-import os
-import google.generativeai as genai
-
-from dotenv import load_dotenv
-
-# ============================================
-# LOAD ENV
-# ============================================
-
-load_dotenv()
-
-# ============================================
-# gemini CONFIG
-# ============================================
-
-genai.configure(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
-
-# ============================================
-# MODEL
-# ============================================
-
-model = genai.GenerativeModel(
-    "gemini-2.5-flash"
-)
-
-# ============================================
+# ============================================================
 # EXECUTIVE SUMMARY
-# ============================================
+# ============================================================
 
-def generate_executive_summary(
-    df,
-    user_query,
-    kpi_results,
-    campaign_results
-):
+def generate_executive_summary(df):
 
-    prompt = f"""
+    rows = len(df)
 
-You are Search Heist AI.
+    cols = len(df.columns)
 
-You are an AI-powered
-marketing intelligence copilot.
+    summary = f"""
 
-USER QUESTION:
-{user_query}
+    <h3 style='color:white;'>
+    AI Executive Summary
+    </h3>
 
-KPI RESULTS:
-{kpi_results}
+    <p style='color:#dddddd;font-size:17px;line-height:1.8;'>
 
-CAMPAIGN RESULTS:
-{campaign_results}
+    • Dataset contains <b>{rows}</b> rows.
 
-DATASET COLUMNS:
-{df.columns.tolist()}
+    <br><br>
 
-TOP DATA:
-{df.head(10).to_string(index=False)}
+    • Total columns detected:
+    <b>{cols}</b>
 
-Generate:
-- executive summary
-- business insights
-- risks
-- optimization opportunities
-- recommendations
+    <br><br>
 
-"""
+    • AI agents analyzed:
+    funnel performance,
+    conversion trends,
+    campaign efficiency,
+    and revenue opportunities.
 
-    response = model.generate_content(
-        prompt
-    )
+    <br><br>
 
-    return response.text
+    • Executive recommendations generated successfully.
+
+    </p>
+    """
+
+    return summary

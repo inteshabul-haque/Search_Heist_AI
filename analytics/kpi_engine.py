@@ -1,74 +1,68 @@
-from analytics.column_detector import detect_columns
+# ============================================================
+# KPI ENGINE
+# ============================================================
 
+def calculate_kpis(df):
 
-def analyze_kpis(df):
+    revenue = 0
+    purchases = 0
+    conversion_rate = 0
+    aov = 0
 
-    insights = []
+    # ========================================================
+    # REVENUE
+    # ========================================================
 
-    detected = detect_columns(df)
+    if "revenue" in df.columns:
 
-    # =========================================
-    # ROAS
-    # =========================================
-
-    if "roas" in detected:
-
-        roas_col = detected["roas"]
-
-        avg_roas = df[roas_col].mean()
-
-        insights.append(
-            f"Average ROAS: {avg_roas:.2f}"
+        revenue = round(
+            df["revenue"].sum(),
+            2
         )
 
-        low_roas = df[
-            df[roas_col] < avg_roas
-        ]
+    # ========================================================
+    # PURCHASES
+    # ========================================================
 
-        insights.append(
-            f"{len(low_roas)} campaigns below average ROAS."
+    if "purchase" in df.columns:
+
+        purchases = int(
+            df["purchase"].sum()
         )
 
-    # =========================================
-    # SPEND
-    # =========================================
+    # ========================================================
+    # CONVERSION RATE
+    # ========================================================
 
-    if "spend" in detected:
+    if "visited" in df.columns and "purchase" in df.columns:
 
-        spend_col = detected["spend"]
+        visits = df["visited"].sum()
 
-        total_spend = df[spend_col].sum()
+        if visits > 0:
 
-        insights.append(
-            f"Total Spend: ${total_spend:,.0f}"
+            conversion_rate = round(
+                (purchases / visits) * 100,
+                2
+            )
+
+    # ========================================================
+    # AOV
+    # ========================================================
+
+    if purchases > 0:
+
+        aov = round(
+            revenue / purchases,
+            2
         )
 
-    # =========================================
-    # CTR
-    # =========================================
+    return {
 
-    if "ctr" in detected:
+        "revenue": revenue,
 
-        ctr_col = detected["ctr"]
+        "purchases": purchases,
 
-        avg_ctr = df[ctr_col].mean()
+        "conversion_rate": conversion_rate,
 
-        insights.append(
-            f"Average CTR: {avg_ctr:.2f}%"
-        )
-
-    # =========================================
-    # CONVERSIONS
-    # =========================================
-
-    if "conversions" in detected:
-
-        conv_col = detected["conversions"]
-
-        total_conv = df[conv_col].sum()
-
-        insights.append(
-            f"Total Conversions: {total_conv:,.0f}"
-        )
-
-    return insights
+        "aov": aov
+    }

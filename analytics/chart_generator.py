@@ -1,25 +1,35 @@
-import plotly.express as px
+import streamlit as st
 
-
-def generate_chart(df):
+def generate_charts(df):
 
     numeric_cols = df.select_dtypes(
         include="number"
-    ).columns.tolist()
+    ).columns
 
-    if len(numeric_cols) < 2:
+    if len(numeric_cols) == 0:
 
-        return None
+        return
 
-    x_col = numeric_cols[0]
+    # ========================================================
+    # LINE CHART
+    # ========================================================
 
-    y_col = numeric_cols[1]
-
-    fig = px.scatter(
-        df,
-        x=x_col,
-        y=y_col,
-        title=f"{x_col} vs {y_col}"
+    st.markdown(
+        "### 📈 Trend Chart"
     )
 
-    return fig
+    st.line_chart(
+        df[numeric_cols]
+    )
+
+    # ========================================================
+    # BAR CHART
+    # ========================================================
+
+    st.markdown(
+        "### 📊 Comparison Chart"
+    )
+
+    st.bar_chart(
+        df[numeric_cols].sum()
+    )

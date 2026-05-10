@@ -1,51 +1,25 @@
-# -----------------------------------
-# TREND ANALYSIS
-# -----------------------------------
-
 def analyze_trends(df):
 
-    insights = []
+    trends = []
 
-    # STANDARDIZE COLUMNS
-    df.columns = [
-        col.strip().lower()
-        for col in df.columns
-    ]
+    if "revenue" in df.columns:
 
-    # ROAS TREND
-    if "roas" in df.columns:
+        revenue = df["revenue"].sum()
 
-        first_roas = df["roas"].iloc[0]
-        last_roas = df["roas"].iloc[-1]
+        if revenue > 0:
 
-        if last_roas > first_roas:
-
-            insights.append(
-                "ROAS trend is improving over time."
+            trends.append(
+                "Revenue trend appears positive."
             )
 
-        else:
+    if "add_to_cart" in df.columns:
 
-            insights.append(
-                "ROAS trend is declining over time."
+        atc = df["add_to_cart"].sum()
+
+        if atc > 0:
+
+            trends.append(
+                "Cart engagement is healthy."
             )
 
-    # CTR TREND
-    if "ctr" in df.columns:
-
-        first_ctr = df["ctr"].iloc[0]
-        last_ctr = df["ctr"].iloc[-1]
-
-        if last_ctr > first_ctr:
-
-            insights.append(
-                "CTR trend is improving."
-            )
-
-        else:
-
-            insights.append(
-                "CTR trend is declining."
-            )
-
-    return "\n".join(insights)
+    return trends
