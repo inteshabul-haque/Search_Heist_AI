@@ -1,62 +1,74 @@
-# -----------------------------------
+import os
+import google.generativeai as genai
+
+from dotenv import load_dotenv
+
+# ============================================
+# LOAD ENV
+# ============================================
+
+load_dotenv()
+
+# ============================================
+# gemini CONFIG
+# ============================================
+
+genai.configure(
+    api_key=os.getenv("GEMINI_API_KEY")
+)
+
+# ============================================
+# MODEL
+# ============================================
+
+model = genai.GenerativeModel(
+    "gemini-2.5-flash"
+)
+
+# ============================================
 # EXECUTIVE SUMMARY
-# -----------------------------------
+# ============================================
 
-def generate_executive_summary(df):
+def generate_executive_summary(
+    df,
+    user_query,
+    kpi_results,
+    campaign_results
+):
 
-    summary = []
+    prompt = f"""
 
-    # STANDARDIZE COLUMNS
-    df.columns = [
-        col.strip().lower()
-        for col in df.columns
-    ]
+You are Search Heist AI.
 
-    # ROAS
-    if "roas" in df.columns:
+You are an AI-powered
+marketing intelligence copilot.
 
-        avg_roas = round(
-            df["roas"].mean(),
-            2
-        )
+USER QUESTION:
+{user_query}
 
-        summary.append(
-            f"Average ROAS is {avg_roas}."
-        )
+KPI RESULTS:
+{kpi_results}
 
-    # SPEND
-    if "spend" in df.columns:
+CAMPAIGN RESULTS:
+{campaign_results}
 
-        total_spend = round(
-            df["spend"].sum(),
-            2
-        )
+DATASET COLUMNS:
+{df.columns.tolist()}
 
-        summary.append(
-            f"Total marketing spend is {total_spend}."
-        )
+TOP DATA:
+{df.head(10).to_string(index=False)}
 
-    # REVENUE
-    if "revenue" in df.columns:
+Generate:
+- executive summary
+- business insights
+- risks
+- optimization opportunities
+- recommendations
 
-        total_revenue = round(
-            df["revenue"].sum(),
-            2
-        )
+"""
 
-        summary.append(
-            f"Total revenue generated is {total_revenue}."
-        )
+    response = model.generate_content(
+        prompt
+    )
 
-    # CONVERSIONS
-    if "conversions" in df.columns:
-
-        total_conversions = int(
-            df["conversions"].sum()
-        )
-
-        summary.append(
-            f"Total conversions are {total_conversions}."
-        )
-
-    return "\n".join(summary)
+    return response.text

@@ -1,199 +1,584 @@
-/* =====================================================
-BACKGROUND
-===================================================== */
+/* =========================================================
+GOOGLE FONT
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+GLOBAL
+========================================================= */
 
 html,
-body,
-[data-testid="stAppViewContainer"],
-.main {
-    background: #000000 !important;
+body {
+
+    font-family: 'Montserrat', sans-serif;
+
+    background: #000000;
+
+    overflow-x: hidden;
+}
+
+/* =========================================================
+APP
+========================================================= */
+
+.stApp {
+
+    background:
+        linear-gradient(
+            135deg,
+            #000000 0%,
+            #050505 50%,
+            #0d0d0d 100%
+        ) !important;
+
     color: white !important;
-    overflow-x: hidden !important;
 }
 
-/* =====================================================
-SIDEBAR
-===================================================== */
+/* =========================================================
+MAIN CONTAINER
+========================================================= */
 
-[data-testid="stSidebar"] {
-    background: #050505 !important;
-    border-right: 1px solid #1a1a1a;
-    width: 230px !important;
+.main .block-container {
+
+    max-width: 96%;
+
+    padding-top: 0.5rem !important;
+
+    padding-bottom: 2rem !important;
 }
 
-/* =====================================================
-REMOVE EXTRA SPACE
-===================================================== */
+/* =========================================================
+SHOW SIDEBAR BUTTON
+========================================================= */
 
-.block-container {
-    padding-top: 1rem !important;
-    padding-bottom: 8rem !important;
-    max-width: 100% !important;
+[data-testid="collapsedControl"] {
+
+    display: flex !important;
+
+    visibility: visible !important;
+
+    opacity: 1 !important;
+
+    z-index: 99999 !important;
 }
 
-/* =====================================================
-HEADER
-===================================================== */
+/* =========================================================
+SIDEBAR FIX
+========================================================= */
 
-.main-title {
-    font-size: 56px;
+section[data-testid="stSidebar"] {
+
+    background:
+        linear-gradient(
+            180deg,
+            #050505,
+            #0c0c0c
+        ) !important;
+
+    border-right:
+        1px solid rgba(255,255,255,0.05);
+}
+
+/* actual sidebar width */
+
+section[data-testid="stSidebar"] > div {
+
+    width: 320px !important;
+}
+
+section[data-testid="stSidebar"] * {
+
+    color: white !important;
+}
+
+/* =========================================================
+SIDEBAR TITLES
+========================================================= */
+
+.sidebar-title {
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+
+    color: white;
+}
+
+.sidebar-subtitle {
+
+    font-size: 14px;
+
+    color: #bbbbbb;
+
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+HERO SECTION
+========================================================= */
+
+.hero {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(120,0,0,0.95),
+            rgba(40,0,0,0.98)
+        );
+
+    padding: 40px;
+
+    border-radius: 26px;
+
+    margin-top: 0px;
+
+    margin-bottom: 24px;
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+        0 0 40px rgba(229,9,20,0.12);
+}
+
+.hero-title {
+
+    font-size: 76px;
+
     font-weight: 900;
-    color: #ff2d6f;
-    margin-bottom: 0px !important;
-    line-height: 1 !important;
+
+    color: #ff1f1f;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 10px;
+
+    text-shadow:
+        0 0 25px rgba(255,0,0,0.35);
 }
 
-.subtitle {
-    color: #d0d0d0;
-    font-size: 18px;
-    margin-top: 0px !important;
-    margin-bottom: 30px !important;
-}
+.hero-subtitle-main {
 
-/* =====================================================
-CHAT
-===================================================== */
+    font-size: 24px;
 
-.ai-message {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 18px;
-    width: 100%;
-}
-
-.user-message {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 18px;
-    width: 100%;
-}
-
-/* =====================================================
-AI BUBBLE
-===================================================== */
-
-.ai-bubble {
-    background: #0f0f0f;
-    border: 1px solid #232323;
-    padding: 18px 20px;
-    border-radius: 18px;
-    width: fit-content;
-    max-width: 75%;
     color: white;
-    font-size: 15px;
-    line-height: 1.6;
-    overflow-wrap: break-word;
+
+    font-weight: 500;
 }
 
-/* =====================================================
-USER BUBBLE
-===================================================== */
+/* =========================================================
+FEATURE CARDS
+========================================================= */
 
-.user-bubble {
-    background: linear-gradient(
-        135deg,
-        #ff0055,
-        #ff2d6f
-    );
-    padding: 14px 18px;
-    border-radius: 18px;
+.feature-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18,18,18,0.96),
+            rgba(8,8,8,0.98)
+        );
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    text-align: center;
+
+    font-weight: 700;
+
     color: white;
-    font-weight: 600;
-    width: fit-content;
-    max-width: 60%;
-    box-shadow: 0 0 20px rgba(255,0,85,0.3);
+
+    transition:
+        all 0.25s ease;
+
+    box-shadow:
+        0 0 20px rgba(229,9,20,0.05);
 }
 
-/* =====================================================
-AI CONTENT
-===================================================== */
+.feature-card:hover {
 
-.ai-content {
-    white-space: pre-wrap;
-    line-height: 1.7;
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 0 25px rgba(229,9,20,0.14);
 }
 
-/* =====================================================
-REMOVE HUGE BULLET SPACING
-===================================================== */
+/* =========================================================
+METRIC CARDS
+========================================================= */
 
-.ai-content ul,
-.ai-content ol {
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
-    padding-left: 20px !important;
+[data-testid="metric-container"] {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18,18,18,0.96),
+            rgba(8,8,8,0.98)
+        ) !important;
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    border-radius: 22px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 0 25px rgba(229,9,20,0.06);
+
+    transition:
+        all 0.25s ease;
 }
 
-.ai-content li {
-    margin-bottom: 2px !important;
-    line-height: 1.4 !important;
+[data-testid="metric-container"]:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 0 30px rgba(229,9,20,0.16);
 }
 
-/* =====================================================
-INPUT BOX
-===================================================== */
+/* =========================================================
+METRIC LABEL
+========================================================= */
+
+[data-testid="metric-container"] label {
+
+    color: #c8c8c8 !important;
+
+    font-size: 14px !important;
+
+    font-weight: 500 !important;
+}
+
+/* =========================================================
+METRIC VALUE
+========================================================= */
+
+[data-testid="stMetricValue"] {
+
+    color: white !important;
+
+    font-size: 46px !important;
+
+    font-weight: 800 !important;
+}
+
+/* =========================================================
+ALERTS
+========================================================= */
+
+.stAlert {
+
+    background:
+        rgba(255,193,7,0.12) !important;
+
+    border:
+        1px solid rgba(255,193,7,0.25) !important;
+
+    border-radius: 14px;
+
+    color: white !important;
+}
+
+.stAlert * {
+
+    color: white !important;
+}
+
+/* =========================================================
+CHAT CARD
+========================================================= */
+
+.chat-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,20,20,0.95),
+            rgba(10,10,10,0.98)
+        );
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    margin-top: 18px;
+
+    margin-bottom: 18px;
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    color: white;
+
+    transition:
+        all 0.25s ease;
+}
+
+.chat-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 0 30px rgba(229,9,20,0.12);
+}
+
+.chat-card h3 {
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    margin-bottom: 20px;
+
+    color: white;
+}
+
+.chat-card p {
+
+    color: #d5d5d5;
+
+    line-height: 1.9;
+
+    font-size: 16px;
+}
+
+/* =========================================================
+CHAT MESSAGES
+========================================================= */
+
+div[data-testid="stChatMessage"] {
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18,18,18,0.96),
+            rgba(8,8,8,0.99)
+        ) !important;
+
+    border-radius: 20px;
+
+    padding: 18px;
+
+    margin-bottom: 16px;
+
+    border:
+        1px solid rgba(255,255,255,0.05);
+
+    transition:
+        all 0.25s ease;
+}
+
+div[data-testid="stChatMessage"]:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 0 24px rgba(229,9,20,0.10);
+}
+
+div[data-testid="stChatMessage"] * {
+
+    color: white !important;
+}
+
+/* =========================================================
+CHAT INPUT
+========================================================= */
 
 [data-testid="stChatInput"] {
-    position: fixed;
-    bottom: 15px;
-    left: 250px;
-    right: 20px;
-    background: #111111 !important;
-    border: 2px solid #ff2d6f !important;
-    border-radius: 18px !important;
-    padding: 12px !important;
-    z-index: 99999;
+
+    position: sticky;
+
+    bottom: 12px;
+
+    background:
+        rgba(10,10,10,0.98) !important;
+
+    border:
+        2px solid rgba(229,9,20,0.45);
+
+    border-radius: 18px;
+
+    padding: 10px;
+
+    box-shadow:
+        0 0 25px rgba(229,9,20,0.12);
+
+    z-index: 999;
 }
 
 [data-testid="stChatInput"] textarea {
-    color: white !important;
-    background: transparent !important;
-    font-size: 16px !important;
-    padding-left: 14px !important;
+
+    color: black !important;
+
+    background: white !important;
+
+    -webkit-text-fill-color: black !important;
+
+    caret-color: black !important;
+
+    font-size: 15px !important;
+
+    border-radius: 12px !important;
 }
 
 [data-testid="stChatInput"] textarea::placeholder {
-    color: #777777 !important;
+
+    color: #666666 !important;
 }
 
-/* =====================================================
-UPLOAD BOX
-===================================================== */
+/* =========================================================
+BUTTONS
+========================================================= */
+
+.stButton button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e50914,
+            #b20710
+        ) !important;
+
+    color: white !important;
+
+    border: none !important;
+
+    border-radius: 12px !important;
+
+    padding: 10px 18px !important;
+
+    font-weight: 700 !important;
+
+    transition:
+        all 0.25s ease;
+}
+
+.stButton button:hover {
+
+    transform:
+        scale(1.02);
+
+    box-shadow:
+        0 0 20px rgba(229,9,20,0.25);
+}
+
+/* =========================================================
+FILE UPLOADER
+========================================================= */
 
 [data-testid="stFileUploader"] {
-    background: #0f0f0f !important;
-    border: 1px solid #333 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111111,
+            #0a0a0a
+        ) !important;
+
+    border:
+        1px solid rgba(255,255,255,0.06) !important;
+
     border-radius: 18px !important;
+
     padding: 14px !important;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,0.35) !important;
 }
 
-/* white upload inner box */
+[data-testid="stFileUploaderDropzone"] {
 
-[data-testid="stFileUploader"] section {
-    background: white !important;
+    background: #151515 !important;
+
+    border:
+        1px dashed rgba(255,255,255,0.10) !important;
+
     border-radius: 14px !important;
-    padding: 10px !important;
+
+    padding: 18px !important;
 }
 
-/* upload text */
+[data-testid="stFileUploaderFile"] {
 
-[data-testid="stFileUploader"] small,
-[data-testid="stFileUploader"] span,
-[data-testid="stFileUploader"] div {
-    color: black !important;
+    background: #1b1b1b !important;
+
+    border:
+        1px solid rgba(255,255,255,0.08) !important;
+
+    border-radius: 14px !important;
+
+    padding: 8px 10px !important;
+
+    margin-top: 10px !important;
 }
 
-/* =====================================================
-SUCCESS BOX
-===================================================== */
+[data-testid="stFileUploader"] * {
 
-.upload-success-box {
-    background: #052d16;
-    border: 1px solid #0f5;
-    padding: 12px;
-    border-radius: 12px;
-    color: #caffd5;
-    font-weight: 700;
-    text-align: center;
-    margin-top: 12px;
+    color: white !important;
+}
+
+[data-testid="stFileUploader"] button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2a2a2a,
+            #1b1b1b
+        ) !important;
+
+    color: white !important;
+
+    border:
+        1px solid rgba(255,255,255,0.08) !important;
+
+    border-radius: 10px !important;
+
+    font-weight: 700 !important;
+}
+
+[data-testid="stFileUploader"] button:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e50914,
+            #b20710
+        ) !important;
+}
+
+/* =========================================================
+SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+
+    background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: #e50914;
+
+    border-radius: 10px;
 }

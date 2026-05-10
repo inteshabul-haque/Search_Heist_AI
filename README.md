@@ -78,7 +78,7 @@ Summarize campaign performance for leadership.
 
 * Python
 * Streamlit
-* Gemini AI
+* gemini AI
 * LangChain
 * Pandas
 * Plotly
@@ -162,7 +162,7 @@ GOOGLE_API_KEY=your_key_here
 
 # Resume Description
 
-Built an AI-powered marketing intelligence and search merchandising platform using Python, Streamlit, Gemini AI, and LangChain. Developed conversational analytics workflows capable of analyzing campaign/search datasets, detecting anomalies, generating executive summaries, and providing optimization recommendations.
+Built an AI-powered marketing intelligence and search merchandising platform using Python, Streamlit, gemini AI, and LangChain. Developed conversational analytics workflows capable of analyzing campaign/search datasets, detecting anomalies, generating executive summaries, and providing optimization recommendations.
 
 ---
 

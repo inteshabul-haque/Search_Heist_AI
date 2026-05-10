@@ -1,62 +1,74 @@
-# -----------------------------------
-# KPI CALCULATIONS
-# -----------------------------------
+from analytics.column_detector import detect_columns
 
-def calculate_kpis(df):
 
-    kpis = {}
+def analyze_kpis(df):
 
-    # STANDARDIZE COLUMNS
-    df.columns = [
-        col.strip().lower()
-        for col in df.columns
-    ]
+    insights = []
 
-    # TOTAL SPEND
-    if "spend" in df.columns:
+    detected = detect_columns(df)
 
-        kpis["Total Spend"] = round(
-            df["spend"].sum(),
-            2
+    # =========================================
+    # ROAS
+    # =========================================
+
+    if "roas" in detected:
+
+        roas_col = detected["roas"]
+
+        avg_roas = df[roas_col].mean()
+
+        insights.append(
+            f"Average ROAS: {avg_roas:.2f}"
         )
 
-    # TOTAL REVENUE
-    if "revenue" in df.columns:
+        low_roas = df[
+            df[roas_col] < avg_roas
+        ]
 
-        kpis["Total Revenue"] = round(
-            df["revenue"].sum(),
-            2
+        insights.append(
+            f"{len(low_roas)} campaigns below average ROAS."
         )
 
-    # AVERAGE ROAS
-    if "roas" in df.columns:
+    # =========================================
+    # SPEND
+    # =========================================
 
-        kpis["Average ROAS"] = round(
-            df["roas"].mean(),
-            2
+    if "spend" in detected:
+
+        spend_col = detected["spend"]
+
+        total_spend = df[spend_col].sum()
+
+        insights.append(
+            f"Total Spend: ${total_spend:,.0f}"
         )
 
-    # AVERAGE CTR
-    if "ctr" in df.columns:
+    # =========================================
+    # CTR
+    # =========================================
 
-        kpis["Average CTR"] = round(
-            df["ctr"].mean(),
-            2
+    if "ctr" in detected:
+
+        ctr_col = detected["ctr"]
+
+        avg_ctr = df[ctr_col].mean()
+
+        insights.append(
+            f"Average CTR: {avg_ctr:.2f}%"
         )
 
-    # TOTAL CONVERSIONS
-    if "conversions" in df.columns:
+    # =========================================
+    # CONVERSIONS
+    # =========================================
 
-        kpis["Total Conversions"] = int(
-            df["conversions"].sum()
+    if "conversions" in detected:
+
+        conv_col = detected["conversions"]
+
+        total_conv = df[conv_col].sum()
+
+        insights.append(
+            f"Total Conversions: {total_conv:,.0f}"
         )
 
-    # AVERAGE CPC
-    if "cpc" in df.columns:
-
-        kpis["Average CPC"] = round(
-            df["cpc"].mean(),
-            2
-        )
-
-    return kpis
+    return insights

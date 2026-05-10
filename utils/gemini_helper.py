@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ==========================================
-# GEMINI CONFIG
+# gemini CONFIG
 # ==========================================
 
 genai.configure(
@@ -25,7 +25,7 @@ model = genai.GenerativeModel(
 )
 
 # ==========================================
-# ASK GEMINI
+# ASK gemini
 # ==========================================
 
 def ask_gemini(prompt, dataframe=None):
@@ -85,7 +85,7 @@ def ask_gemini(prompt, dataframe=None):
         """
 
         # ==================================
-        # GEMINI RESPONSE
+        # gemini RESPONSE
         # ==================================
 
         response = model.generate_content(

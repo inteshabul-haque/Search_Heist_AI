@@ -1,23 +1,29 @@
-# -----------------------------------
-# CHAT MEMORY FUNCTIONS
-# -----------------------------------
+# ============================================================
+# SIMPLE CHAT MEMORY
+# ============================================================
 
-def add_to_memory(chat_history, role, content):
+chat_history = []
+
+# ============================================================
+# SAVE CHAT
+# ============================================================
+
+def save_chat(
+    user_message,
+    ai_message
+):
 
     chat_history.append(
         {
-            "role": role,
-            "content": content
+            "user": user_message,
+            "assistant": ai_message
         }
     )
 
+# ============================================================
+# LOAD CHAT HISTORY
+# ============================================================
+
+def load_chat_history():
+
     return chat_history
-
-
-# -----------------------------------
-# RECENT CONVERSATION MEMORY
-# -----------------------------------
-
-def get_recent_memory(chat_history, limit=6):
-
-    return chat_history[-limit:]
