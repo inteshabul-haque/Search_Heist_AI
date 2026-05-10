@@ -1,7 +1,7 @@
 import streamlit as st
 
 from analytics.executive_summary import generate_executive_summary
-from .kpi_engine import calculate_kpis
+from analytics.kpi_engine import calculate_kpis
 from analytics.funnel_analysis import analyze_funnel
 from analytics.chart_generator import generate_charts
 from analytics.anomaly_detection import detect_anomalies
