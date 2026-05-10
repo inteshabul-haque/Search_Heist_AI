@@ -1,441 +1,199 @@
-/* =========================================================
-GLOBAL
-========================================================= */
+/* =====================================================
+BACKGROUND
+===================================================== */
 
 html,
 body,
 [data-testid="stAppViewContainer"],
-.main,
-.stApp {
-
+.main {
     background: #000000 !important;
-
     color: white !important;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
     overflow-x: hidden !important;
-
-    font-family: "Segoe UI", sans-serif !important;
 }
 
-/* =========================================================
-REMOVE TOP WHITE SPACE
-========================================================= */
-
-header {
-
-    background: #000000 !important;
-}
-
-[data-testid="stHeader"] {
-
-    display: none !important;
-}
-
-[data-testid="stToolbar"] {
-
-    top: 10px !important;
-
-    right: 20px !important;
-}
-
-/* =========================================================
-MAIN CONTAINER
-========================================================= */
-
-.block-container {
-
-    padding-top: 0rem !important;
-
-    margin-top: -30px !important;
-
-    padding-bottom: 8rem !important;
-
-    background: #000000 !important;
-}
-
-/* =========================================================
+/* =====================================================
 SIDEBAR
-========================================================= */
+===================================================== */
 
 [data-testid="stSidebar"] {
-
-    background: #0a0a0a !important;
-
-    border-right: 1px solid #1f1f1f;
-
-    width: 240px !important;
-
-    min-width: 240px !important;
-
-    max-width: 240px !important;
+    background: #050505 !important;
+    border-right: 1px solid #1a1a1a;
+    width: 230px !important;
 }
 
-[data-testid="stSidebar"] * {
+/* =====================================================
+REMOVE EXTRA SPACE
+===================================================== */
 
+.block-container {
+    padding-top: 1rem !important;
+    padding-bottom: 8rem !important;
+    max-width: 100% !important;
+}
+
+/* =====================================================
+HEADER
+===================================================== */
+
+.main-title {
+    font-size: 56px;
+    font-weight: 900;
+    color: #ff2d6f;
+    margin-bottom: 0px !important;
+    line-height: 1 !important;
+}
+
+.subtitle {
+    color: #d0d0d0;
+    font-size: 18px;
+    margin-top: 0px !important;
+    margin-bottom: 30px !important;
+}
+
+/* =====================================================
+CHAT
+===================================================== */
+
+.ai-message {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.user-message {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+/* =====================================================
+AI BUBBLE
+===================================================== */
+
+.ai-bubble {
+    background: #0f0f0f;
+    border: 1px solid #232323;
+    padding: 18px 20px;
+    border-radius: 18px;
+    width: fit-content;
+    max-width: 75%;
+    color: white;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+}
+
+/* =====================================================
+USER BUBBLE
+===================================================== */
+
+.user-bubble {
+    background: linear-gradient(
+        135deg,
+        #ff0055,
+        #ff2d6f
+    );
+    padding: 14px 18px;
+    border-radius: 18px;
+    color: white;
+    font-weight: 600;
+    width: fit-content;
+    max-width: 60%;
+    box-shadow: 0 0 20px rgba(255,0,85,0.3);
+}
+
+/* =====================================================
+AI CONTENT
+===================================================== */
+
+.ai-content {
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+/* =====================================================
+REMOVE HUGE BULLET SPACING
+===================================================== */
+
+.ai-content ul,
+.ai-content ol {
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    padding-left: 20px !important;
+}
+
+.ai-content li {
+    margin-bottom: 2px !important;
+    line-height: 1.4 !important;
+}
+
+/* =====================================================
+INPUT BOX
+===================================================== */
+
+[data-testid="stChatInput"] {
+    position: fixed;
+    bottom: 15px;
+    left: 250px;
+    right: 20px;
+    background: #111111 !important;
+    border: 2px solid #ff2d6f !important;
+    border-radius: 18px !important;
+    padding: 12px !important;
+    z-index: 99999;
+}
+
+[data-testid="stChatInput"] textarea {
     color: white !important;
+    background: transparent !important;
+    font-size: 16px !important;
+    padding-left: 14px !important;
 }
 
-/* =========================================================
+[data-testid="stChatInput"] textarea::placeholder {
+    color: #777777 !important;
+}
+
+/* =====================================================
 UPLOAD BOX
-========================================================= */
+===================================================== */
 
 [data-testid="stFileUploader"] {
-
-    background: #111111 !important;
-
-    border: 1px solid #333333 !important;
-
-    border-radius: 20px !important;
-
-    padding: 15px !important;
+    background: #0f0f0f !important;
+    border: 1px solid #333 !important;
+    border-radius: 18px !important;
+    padding: 14px !important;
 }
 
-/* INNER WHITE BOX */
+/* white upload inner box */
 
 [data-testid="stFileUploader"] section {
-
-    background: #ffffff !important;
-
+    background: white !important;
     border-radius: 14px !important;
-
     padding: 10px !important;
 }
 
-/* FILE TEXT */
+/* upload text */
 
 [data-testid="stFileUploader"] small,
 [data-testid="stFileUploader"] span,
 [data-testid="stFileUploader"] div {
-
-    color: black !important;
-
-    font-weight: 700 !important;
-}
-
-/* FORCE BLACK TEXT */
-
-.uploadedFile,
-.uploadedFileName {
-
     color: black !important;
 }
 
-/* =========================================================
+/* =====================================================
 SUCCESS BOX
-========================================================= */
-
-.stSuccess {
-
-    background: #0d2a16 !important;
-
-    color: #7dff9a !important;
-
-    border-radius: 14px !important;
-}
-
-/* =========================================================
-HEADINGS
-========================================================= */
-
-h1,
-h2,
-h3,
-h4 {
-
-    color: white !important;
-}
-
-/* =========================================================
-CHAT AREA
-========================================================= */
-
-.stChatMessage {
-
-    background: transparent !important;
-
-    border: none !important;
-
-    padding: 0 !important;
-
-    margin-bottom: 18px !important;
-
-    color: white !important;
-}
-
-/* =========================================================
-CONTINUOUS CHAT FLOW
-========================================================= */
-
-.chat-container {
-
-    width: 100%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
-
-    margin-top: 20px;
-
-    margin-bottom: 140px;
-}
-
-/* =========================================================
-USER MESSAGE RIGHT
-========================================================= */
-
-.user-message {
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: flex-end;
-
-    align-items: flex-end;
-
-    margin-top: 20px;
-
-    margin-bottom: 20px;
-
-    clear: both;
-}
-
-/* USER RED BUBBLE */
-
-.user-bubble {
-
-    background: linear-gradient(
-        135deg,
-        #ff0055,
-        #ff3b82
-    );
-
-    color: #ffffff !important;
-
-    padding: 14px 22px;
-
-    border-radius: 20px;
-
-    max-width: 380px;
-
-    font-weight: 700;
-
-    font-size: 16px;
-
-    line-height: 1.6;
-
-    box-shadow:
-        0 0 18px rgba(255,0,80,0.35);
-
-    word-break: break-word;
-
-    white-space: pre-wrap;
-}
-
-/* =========================================================
-AI MESSAGE LEFT
-========================================================= */
-
-.ai-message {
-
-    width: 100%;
-
-    display: flex;
-
-    justify-content: flex-start;
-
-    align-items: flex-start;
-
-    margin-top: 20px;
-
-    margin-bottom: 20px;
-
-    clear: both;
-}
-
-.ai-bubble {
-
-    background: #111111;
-
-    border: 1px solid #2a2a2a;
-
-    color: white !important;
-
-    padding: 18px;
-
-    border-radius: 20px;
-
-    width: 78%;
-
-    max-width: 78%;
-
-    line-height: 1.8;
-
-    word-break: break-word;
-
-    white-space: pre-wrap;
-
-    overflow-wrap: break-word;
-}
-
-/* =========================================================
-PREVENT SPLIT LAYOUT
-========================================================= */
-
-.ai-bubble *,
-.user-bubble * {
-
-    color: inherit !important;
-
-    word-break: break-word !important;
-
-    overflow-wrap: break-word !important;
-}
-
-/* =========================================================
-CODE BLOCKS
-========================================================= */
-
-.ai-bubble code,
-.ai-bubble pre {
-
-    background: #0d0d0d !important;
-
-    color: white !important;
-
-    border-radius: 12px;
-
+===================================================== */
+
+.upload-success-box {
+    background: #052d16;
+    border: 1px solid #0f5;
     padding: 12px;
-
-    overflow-x: auto;
-}
-
-/* =========================================================
-INPUT BOX
-========================================================= */
-
-.stChatInput {
-
-    position: fixed !important;
-
-    bottom: 0 !important;
-
-    left: 240px !important;
-
-    right: 10px !important;
-
-    background: #000000 !important;
-
-    padding: 10px !important;
-
-    z-index: 999999 !important;
-}
-
-/* =========================================================
-TEXT AREA
-========================================================= */
-
-.stChatInput textarea {
-
-    background: #111111 !important;
-
-    color: white !important;
-
-    border: 2px solid #ff0055 !important;
-
-    border-radius: 20px !important;
-
-    min-height: 70px !important;
-
-    font-size: 16px !important;
-
-    padding-left: 28px !important;
-
-    padding-top: 18px !important;
-}
-
-/* =========================================================
-PLACEHOLDER
-========================================================= */
-
-.stChatInput textarea::placeholder {
-
-    color: #7a7a7a !important;
-
-    opacity: 1 !important;
-
-    font-size: 15px !important;
-}
-
-/* =========================================================
-SCROLL
-========================================================= */
-
-section.main {
-
-    overflow-y: auto !important;
-}
-
-/* =========================================================
-REMOVE OVERLAP
-========================================================= */
-
-.main .block-container {
-
-    margin-left: 10px !important;
-}
-
-/* =========================================================
-WELCOME BOX
-========================================================= */
-
-.welcome-box {
-
-    background: #111111;
-
-    border: 1px solid #2a2a2a;
-
-    border-radius: 20px;
-
-    padding: 25px;
-
-    color: white;
-
-    margin-top: 20px;
-}
-
-/* =========================================================
-LINKS
-========================================================= */
-
-a {
-
-    color: #4da6ff !important;
-}
-
-/* =========================================================
-SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar {
-
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-
-    background: #050505;
-}
-
-::-webkit-scrollbar-thumb {
-
-    background: #ff0055;
-
-    border-radius: 10px;
+    border-radius: 12px;
+    color: #caffd5;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 12px;
 }
