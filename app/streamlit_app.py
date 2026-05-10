@@ -5,15 +5,15 @@
 import sys
 import os
 
-sys.path.append(
-    os.path.abspath(
-        os.path.join(
-            os.path.dirname(__file__),
-            ".."
-        )
-    )
-)
+import sys
+from pathlib import Path
 
+ROOT_DIR = Path(__file__).resolve().parent.parent
+
+if str(ROOT_DIR) not in sys.path:
+
+    sys.path.insert(0, str(ROOT_DIR))
+    
 import pandas as pd
 import streamlit as st
 
