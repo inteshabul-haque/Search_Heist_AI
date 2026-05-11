@@ -391,9 +391,53 @@ div[data-testid="stChatMessage"]:hover {
         0 0 24px rgba(229,9,20,0.10);
 }
 
-div[data-testid="stChatMessage"] * {
+div[data-testid="stChatMessage"] {
 
     color: white !important;
+}
+
+/* Normal text */
+
+div[data-testid="stChatMessage"] p,
+div[data-testid="stChatMessage"] li,
+div[data-testid="stChatMessage"] span {
+
+    color: white !important;
+}
+
+/* Bold text */
+
+div[data-testid="stChatMessage"] strong {
+
+    color: #ffffff !important;
+
+    font-weight: 700 !important;
+}
+
+/* Inline code / highlighted */
+
+div[data-testid="stChatMessage"] code {
+
+    background: #1f1f1f !important;
+
+    color: #ff6b6b !important;
+
+    padding: 2px 6px !important;
+
+    border-radius: 6px !important;
+}
+
+/* Markdown highlights */
+
+div[data-testid="stChatMessage"] mark {
+
+    background: #2a2a2a !important;
+
+    color: white !important;
+
+    border-radius: 6px !important;
+
+    padding: 2px 6px !important;
 }
 
 /* =========================================================
@@ -581,4 +625,75 @@ SCROLLBAR
     background: #e50914;
 
     border-radius: 10px;
+}
+
+/* =========================================================
+INLINE CODE FIX
+========================================================= */
+
+code {
+
+    background: #1f1f1f !important;
+
+    color: #ff6b6b !important;
+
+    padding: 2px 6px !important;
+
+    border-radius: 6px !important;
+
+    font-size: 14px !important;
+}
+
+/* =========================================================
+CODE BLOCK FIX
+========================================================= */
+
+pre {
+
+    background: #111111 !important;
+
+    color: white !important;
+
+    border-radius: 12px !important;
+
+    padding: 14px !important;
+
+    overflow-x: auto !important;
+}
+
+/* =========================================================
+MARKDOWN TEXT FIX
+========================================================= */
+
+.stMarkdown,
+.stMarkdown p,
+.stMarkdown li,
+.stMarkdown span {
+
+    color: white !important;
+}
+
+/* =========================================================
+TABLE FIX
+========================================================= */
+
+table {
+
+    background: #111111 !important;
+
+    color: white !important;
+}
+
+th {
+
+    background: #1a1a1a !important;
+
+    color: white !important;
+}
+
+td {
+
+    background: #111111 !important;
+
+    color: white !important;
 }

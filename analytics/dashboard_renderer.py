@@ -62,18 +62,7 @@ def render_dashboard(df):
     summary = generate_executive_summary(df)
 
     st.markdown(
-        f"""
-        <div style='
-            background:#111111;
-            padding:25px;
-            border-radius:18px;
-            border:1px solid #222222;
-        '>
-
-        {summary}
-
-        </div>
-        """,
+        summary,
         unsafe_allow_html=True
     )
 

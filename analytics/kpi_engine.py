@@ -1,7 +1,3 @@
-# ============================================================
-# KPI ENGINE
-# ============================================================
-
 def calculate_kpis(df):
 
     revenue = 0
@@ -9,34 +5,40 @@ def calculate_kpis(df):
     conversion_rate = 0
     aov = 0
 
-    # ========================================================
-    # REVENUE
-    # ========================================================
+    revenue_col = None
+    purchase_col = None
+    visitor_col = None
 
-    if "revenue" in df.columns:
+    # Detect columns automatically
 
-        revenue = round(
-            df["revenue"].sum(),
-            2
-        )
+    for col in df.columns:
 
-    # ========================================================
-    # PURCHASES
-    # ========================================================
+        c = col.lower()
 
-    if "purchase" in df.columns:
+        if "revenue" in c:
+            revenue_col = col
 
-        purchases = int(
-            df["purchase"].sum()
-        )
+        if "purchase" in c or "order" in c:
+            purchase_col = col
 
-    # ========================================================
-    # CONVERSION RATE
-    # ========================================================
+        if "visit" in c or "traffic" in c:
+            visitor_col = col
 
-    if "visited" in df.columns and "purchase" in df.columns:
+    # Revenue
 
-        visits = df["visited"].sum()
+    if revenue_col:
+        revenue = round(df[revenue_col].sum(), 2)
+
+    # Purchases
+
+    if purchase_col:
+        purchases = int(df[purchase_col].sum())
+
+    # Conversion Rate
+
+    if visitor_col and purchase_col:
+
+        visits = df[visitor_col].sum()
 
         if visits > 0:
 
@@ -45,9 +47,7 @@ def calculate_kpis(df):
                 2
             )
 
-    # ========================================================
     # AOV
-    # ========================================================
 
     if purchases > 0:
 
@@ -57,12 +57,8 @@ def calculate_kpis(df):
         )
 
     return {
-
         "revenue": revenue,
-
         "purchases": purchases,
-
         "conversion_rate": conversion_rate,
-
         "aov": aov
     }
