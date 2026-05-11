@@ -1,0 +1,11 @@
+date,campaign,channel,visited,product_view,add_to_cart,checkout,purchase,revenue,aov
+2026-01-01,Meta Winter,Meta,1200,900,400,220,120,18000,150
+2026-01-02,Google Search,Google,1500,1200,500,280,160,24000,150
+2026-01-03,Email Blast,Email,900,650,300,170,95,12500,131
+2026-01-04,Instagram Reels,Instagram,1800,1500,650,340,210,32000,152
+2026-01-05,Affiliate,Affiliate,700,500,180,100,60,8000,133
+2026-01-06,Meta Retargeting,Meta,1600,1300,550,300,180,27000,150
+2026-01-07,Google Shopping,Google,1400,1100,450,250,150,22000,147
+2026-01-08,TikTok Ads,TikTok,2000,1600,700,390,240,36000,150
+2026-01-09,SEO Organic,SEO,1100,850,320,180,110,15000,136
+2026-01-10,YouTube Ads,YouTube,1700,1400,600,310,190,29000,152
