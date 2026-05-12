@@ -31,13 +31,13 @@ def generate_charts(df):
     chart_df = df[numeric_cols].copy()
 
     # =====================================================
-    # TREND ANALYSIS
+    # TREND LINE CHART
     # =====================================================
 
- 
-
     fig_line = px.line(
+
         chart_df,
+
         template="plotly_dark"
     )
 
@@ -74,7 +74,8 @@ def generate_charts(df):
             x=1,
 
             font=dict(
-                size=10
+                size=10,
+                color="white"
             )
         ),
 
@@ -89,7 +90,9 @@ def generate_charts(df):
     )
 
     st.plotly_chart(
+
         fig_line,
+
         use_container_width=True
     )
 

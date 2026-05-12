@@ -8,6 +8,7 @@ from analytics.chart_generator import generate_charts
 from analytics.anomaly_detection import detect_anomalies
 from analytics.trend_analysis import analyze_trends
 
+
 # ============================================================
 # DASHBOARD RENDERER
 # ============================================================
@@ -134,14 +135,11 @@ def render_dashboard(df):
         )
 
         fig_funnel.update_traces(
-
             textfont_size=14
         )
 
         st.plotly_chart(
-
             fig_funnel,
-
             use_container_width=True
         )
 

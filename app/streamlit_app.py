@@ -198,13 +198,39 @@ st.markdown(
 
     [data-testid="metric-container"] {
 
-        background: #111111 !important;
+        background:
+            linear-gradient(
+                135deg,
+                rgba(15,15,15,0.98),
+                rgba(8,8,8,1)
+            ) !important;
 
-        border: 1px solid #222222 !important;
+        border:
+            1px solid rgba(255,0,80,0.18) !important;
 
-        border-radius: 18px !important;
+        border-radius: 22px !important;
 
-        padding: 18px !important;
+        padding: 24px !important;
+
+        box-shadow:
+            0 0 18px rgba(255,0,80,0.08) !important;
+
+        transition:
+            all 0.25s ease-in-out !important;
+
+        min-height: 140px !important;
+    }
+
+    [data-testid="metric-container"]:hover {
+
+        transform:
+            translateY(-4px);
+
+        box-shadow:
+            0 0 28px rgba(255,0,80,0.18) !important;
+
+        border:
+            1px solid rgba(255,0,80,0.35) !important;
     }
 
     [data-testid="metric-container"] * {
@@ -212,6 +238,59 @@ st.markdown(
         color: white !important;
     }
 
+    /* KPI LABEL */
+
+    [data-testid="metric-container"] label {
+
+        color: #9e9e9e !important;
+
+        font-size: 15px !important;
+
+        font-weight: 500 !important;
+
+        letter-spacing: 0.4px !important;
+    }
+
+    /* KPI VALUE */
+
+    div[data-testid="stMetricValue"] {
+
+    color: white !important;
+
+    -webkit-text-fill-color: white !important;
+
+    opacity: 1 !important;
+
+    font-size: 42px !important;
+
+    font-weight: 800 !important;
+
+    line-height: 1.2 !important;
+}
+
+/* KPI LABEL */
+
+    div[data-testid="stMetricLabel"] {
+
+    color: #d9d9d9 !important;
+
+    -webkit-text-fill-color: #d9d9d9 !important;
+
+    opacity: 1 !important;
+
+    font-size: 16px !important;
+
+    font-weight: 600 !important;
+}
+
+    /* KPI DELTA */
+
+    [data-testid="metric-container"] [data-testid="stMetricDelta"] {
+
+        font-size: 15px !important;
+
+        font-weight: 600 !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -462,6 +541,13 @@ if prompt:
 
             response = ask_gemini(
                 final_prompt
+            )
+
+            # REMOVE MARKDOWN HIGHLIGHTING
+
+            response = response.replace(
+                "`",
+                ""
             )
 
         except Exception as e:
