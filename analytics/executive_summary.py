@@ -455,14 +455,6 @@ Improving data consistency may strengthen reporting reliability and decision-mak
     border:1px solid rgba(255,255,255,0.06);
 ">
 
-<h3 style="
-    color:white;
-    margin-bottom:18px;
-    font-size:28px;
-    font-weight:800;
-">
-🧠 Executive Summary
-</h3>
 
 <ul style="
     color:#dddddd;

@@ -34,20 +34,7 @@ def generate_charts(df):
     # TREND ANALYSIS
     # =====================================================
 
-    st.markdown(
-        """
-        <h3 style='
-            color:#ff004f;
-            margin-top:15px;
-            margin-bottom:12px;
-            font-size:24px;
-            font-weight:800;
-        '>
-        📈 Trend Analysis
-        </h3>
-        """,
-        unsafe_allow_html=True
-    )
+ 
 
     fig_line = px.line(
         chart_df,
