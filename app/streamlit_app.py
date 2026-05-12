@@ -311,10 +311,12 @@ demo_clicked = st.button(
     type="primary"
 )
 # ============================================================
-# LOAD DATA
+# SESSION STATE DATAFRAME
 # ============================================================
 
-df = None
+if "df" not in st.session_state:
+
+    st.session_state.df = None
 
 # ============================================================
 # USER UPLOADED DATA
@@ -326,13 +328,19 @@ if uploaded_file is not None:
 
         if uploaded_file.name.endswith(".csv"):
 
-            df = pd.read_csv(uploaded_file)
+            st.session_state.df = pd.read_csv(
+                uploaded_file
+            )
 
         else:
 
-            df = pd.read_excel(uploaded_file)
+            st.session_state.df = pd.read_excel(
+                uploaded_file
+            )
 
-        st.success("Dataset Loaded Successfully")
+        st.success(
+            "Dataset Loaded Successfully"
+        )
 
     except Exception as e:
 
@@ -346,24 +354,35 @@ elif demo_clicked:
 
     try:
 
-        demo_path = ROOT_DIR / "database" / "search_heist_sample_dataset.csv"
+        demo_path = (
+            ROOT_DIR
+            / "database"
+            / "search_heist_sample_dataset.csv"
+        )
 
-        df = pd.read_csv(demo_path)
+        st.session_state.df = pd.read_csv(
+            demo_path
+        )
 
-        st.success("Demo Dataset Loaded Successfully")
+        st.success(
+            "Demo Dataset Loaded Successfully"
+        )
 
     except Exception as e:
 
-        st.error(f"Demo Data Error: {str(e)}")
+        st.error(
+            f"Demo Data Error: {str(e)}"
+        )
 
 # ============================================================
 # RENDER DASHBOARD
 # ============================================================
 
-if df is not None:
+if st.session_state.df is not None:
 
-    render_dashboard(df)
-
+    render_dashboard(
+        st.session_state.df
+    )
 # ============================================================
 # CHAT HISTORY
 # ============================================================
@@ -386,7 +405,7 @@ prompt = st.chat_input(
     "Ask The Professor about campaign intelligence..."
 )
 
-# ============================================================
+## ============================================================
 # AI CHAT RESPONSE
 # ============================================================
 
@@ -403,15 +422,19 @@ if prompt:
 
         st.markdown(prompt)
 
-    if df is not None:
+    # =====================================================
+    # DATASET EXISTS
+    # =====================================================
+
+    if st.session_state.df is not None:
 
         dataset_context = f"""
 
         Dataset Columns:
-        {list(df.columns)}
+        {list(st.session_state.df.columns)}
 
         Sample Data:
-        {df.head(10).to_string()}
+        {st.session_state.df.head(10).to_string()}
 
         """
 
@@ -448,6 +471,10 @@ if prompt:
     else:
 
         response = "Please upload dataset first."
+
+    # =====================================================
+    # ASSISTANT RESPONSE
+    # =====================================================
 
     with st.chat_message("assistant"):
 

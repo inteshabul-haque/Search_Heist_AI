@@ -1,4 +1,5 @@
 import streamlit as st
+import plotly.express as px
 
 from analytics.executive_summary import generate_executive_summary
 from analytics.kpi_engine import calculate_kpis
@@ -56,7 +57,18 @@ def render_dashboard(df):
     # ========================================================
 
     st.markdown(
-        "## 🧠 Executive Summary"
+        """
+        <h3 style='
+            color:#ff004f;
+            margin-top:15px;
+            margin-bottom:15px;
+            font-size:24px;
+            font-weight:800;
+        '>
+        🧠 Executive Summary
+        </h3>
+        """,
+        unsafe_allow_html=True
     )
 
     summary = generate_executive_summary(df)
@@ -67,7 +79,7 @@ def render_dashboard(df):
     )
 
     # ========================================================
-    # FUNNEL
+    # FUNNEL ANALYSIS
     # ========================================================
 
     funnel_df = analyze_funnel(df)
@@ -75,11 +87,62 @@ def render_dashboard(df):
     if funnel_df is not None:
 
         st.markdown(
-            "## 📉 Funnel Analysis"
+            """
+            <h3 style='
+                color:#ff004f;
+                margin-top:20px;
+                margin-bottom:15px;
+                font-size:24px;
+                font-weight:800;
+            '>
+            📉 Funnel Analysis
+            </h3>
+            """,
+            unsafe_allow_html=True
         )
 
-        st.bar_chart(
-            funnel_df.set_index("stage")
+        fig_funnel = px.funnel(
+
+            funnel_df,
+
+            x="users",
+
+            y="stage",
+
+            template="plotly_dark"
+        )
+
+        fig_funnel.update_layout(
+
+            paper_bgcolor="#050505",
+
+            plot_bgcolor="#050505",
+
+            font=dict(
+                color="white",
+                size=13
+            ),
+
+            height=380,
+
+            margin=dict(
+                l=10,
+                r=10,
+                t=20,
+                b=10
+            )
+        )
+
+        fig_funnel.update_traces(
+
+            textfont_size=14
+        )
+
+        st.plotly_chart(
+
+            fig_funnel,
+
+            use_container_width=True
         )
 
     # ========================================================
@@ -87,7 +150,18 @@ def render_dashboard(df):
     # ========================================================
 
     st.markdown(
-        "## 📈 Trend Analysis"
+        """
+        <h3 style='
+            color:#ff004f;
+            margin-top:20px;
+            margin-bottom:15px;
+            font-size:24px;
+            font-weight:800;
+        '>
+        📈 Trend Analysis
+        </h3>
+        """,
+        unsafe_allow_html=True
     )
 
     generate_charts(df)
@@ -97,7 +171,18 @@ def render_dashboard(df):
     # ========================================================
 
     st.markdown(
-        "## 🚨 AI Detected Issues"
+        """
+        <h3 style='
+            color:#ff004f;
+            margin-top:20px;
+            margin-bottom:15px;
+            font-size:24px;
+            font-weight:800;
+        '>
+        🚨 AI Detected Issues
+        </h3>
+        """,
+        unsafe_allow_html=True
     )
 
     anomalies = detect_anomalies(df)
@@ -119,7 +204,18 @@ def render_dashboard(df):
     # ========================================================
 
     st.markdown(
-        "## 🔥 Trend Insights"
+        """
+        <h3 style='
+            color:#ff004f;
+            margin-top:20px;
+            margin-bottom:15px;
+            font-size:24px;
+            font-weight:800;
+        '>
+        🔥 Trend Insights
+        </h3>
+        """,
+        unsafe_allow_html=True
     )
 
     trends = analyze_trends(df)
@@ -133,7 +229,18 @@ def render_dashboard(df):
     # ========================================================
 
     st.markdown(
-        "## 📋 Dataset Preview"
+        """
+        <h3 style='
+            color:#ff004f;
+            margin-top:20px;
+            margin-bottom:15px;
+            font-size:24px;
+            font-weight:800;
+        '>
+        📋 Dataset Preview
+        </h3>
+        """,
+        unsafe_allow_html=True
     )
 
     st.dataframe(
