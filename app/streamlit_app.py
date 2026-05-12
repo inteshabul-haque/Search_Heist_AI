@@ -289,17 +289,36 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
+
+# ============================================================
+# FILE UPLOADER
+# ============================================================
+
 uploaded_file = st.file_uploader(
     "",
     type=["csv", "xlsx"],
-    label_visibility="collapsed"
+    label_visibility="collapsed",
+    key="main_uploader"
 )
+# ============================================================
+# LOAD DEMO DATA BUTTON
+# ============================================================
 
+demo_clicked = st.button(
+    "LOAD DEMO DATA",
+    key="demo_data_btn",
+    type="primary"
+)
 # ============================================================
 # LOAD DATA
 # ============================================================
 
 df = None
+
+# ============================================================
+# USER UPLOADED DATA
+# ============================================================
 
 if uploaded_file is not None:
 
@@ -313,19 +332,37 @@ if uploaded_file is not None:
 
             df = pd.read_excel(uploaded_file)
 
-        st.success(
-            "Dataset Loaded Successfully"
-        )
-
-        # ====================================================
-        # AI DASHBOARD
-        # ====================================================
-
-        render_dashboard(df)
+        st.success("Dataset Loaded Successfully")
 
     except Exception as e:
 
         st.error(str(e))
+
+# ============================================================
+# DEMO DATA
+# ============================================================
+
+elif demo_clicked:
+
+    try:
+
+        demo_path = ROOT_DIR / "database" / "search_heist_sample_dataset.csv"
+
+        df = pd.read_csv(demo_path)
+
+        st.success("Demo Dataset Loaded Successfully")
+
+    except Exception as e:
+
+        st.error(f"Demo Data Error: {str(e)}")
+
+# ============================================================
+# RENDER DASHBOARD
+# ============================================================
+
+if df is not None:
+
+    render_dashboard(df)
 
 # ============================================================
 # CHAT HISTORY

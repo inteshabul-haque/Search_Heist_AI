@@ -697,3 +697,163 @@ td {
 
     color: white !important;
 }
+/* =========================================================
+FILE UPLOADER FINAL FIX
+========================================================= */
+
+[data-testid="stFileUploader"] {
+
+    background:
+        linear-gradient(
+            135deg,
+            #111111,
+            #0a0a0a
+        ) !important;
+
+    border:
+        1px solid rgba(255,255,255,0.06) !important;
+
+    border-radius: 18px !important;
+
+    padding: 14px !important;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,0.35) !important;
+}
+
+/* DROPZONE */
+
+[data-testid="stFileUploaderDropzone"] {
+
+    background: #151515 !important;
+
+    border:
+        1px dashed rgba(255,255,255,0.10) !important;
+
+    border-radius: 14px !important;
+
+    padding: 18px !important;
+}
+
+/* FORCE TEXT COLORS */
+
+[data-testid="stFileUploader"] *,
+[data-testid="stFileUploaderDropzone"] *,
+[data-testid="stFileUploaderFile"] * {
+
+    color: white !important;
+
+    fill: white !important;
+}
+
+/* UPLOAD BUTTON */
+
+[data-testid="stFileUploader"] button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2a2a2a,
+            #1b1b1b
+        ) !important;
+
+    color: white !important;
+
+    border:
+        1px solid rgba(255,255,255,0.08) !important;
+
+    border-radius: 10px !important;
+
+    font-weight: 700 !important;
+}
+
+[data-testid="stFileUploader"] button * {
+
+    color: white !important;
+
+    fill: white !important;
+}
+
+/* FILE NAME BOX */
+
+[data-testid="stFileUploaderFile"] {
+
+    background:
+        linear-gradient(
+            135deg,
+            #1a1a1a,
+            #111111
+        ) !important;
+
+    border:
+        1px solid rgba(255,255,255,0.08) !important;
+
+    border-radius: 12px !important;
+
+    padding: 10px !important;
+
+    margin-top: 12px !important;
+}
+
+/* REMOVE STREAMLIT WHITE CHIP */
+
+[data-testid="stFileUploaderFileName"] {
+
+    color: white !important;
+}
+
+/* =========================================================
+DEMO BUTTON FINAL FIX
+========================================================= */
+
+div[data-testid="stButton"] > button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff003c,
+            #ff004f
+        ) !important;
+
+    color: #ffffff !important;
+
+    border: none !important;
+
+    border-radius: 14px !important;
+
+    font-size: 16px !important;
+
+    font-weight: 800 !important;
+
+    padding: 12px 22px !important;
+
+    min-height: 52px !important;
+
+    box-shadow:
+        0 0 18px rgba(255,0,80,0.35) !important;
+
+    transition: all 0.25s ease !important;
+}
+
+/* FORCE BUTTON TEXT */
+
+div[data-testid="stButton"] > button *,
+div[data-testid="stButton"] > button span,
+div[data-testid="stButton"] > button p {
+
+    color: #ffffff !important;
+
+    fill: #ffffff !important;
+
+    opacity: 1 !important;
+}
+
+/* HOVER */
+
+div[data-testid="stButton"] > button:hover {
+
+    transform: scale(1.03);
+
+    box-shadow:
+        0 0 28px rgba(255,0,80,0.55) !important;
+}
